@@ -1,0 +1,22 @@
+
+.cart-confirm-button
+{
+  width: 20%;
+  border: 1px solid #ffffff;    
+  margin-top: 2rem;
+  margin-right: 10%;
+  float: right;
+  font-size: 18px;
+  font-family: "Calibri";
+
+  
+}
+
+.cart-price
+{
+  margin-top: 2rem;
+  margin-right: 5%;
+  float: right;
+ 
+}
+

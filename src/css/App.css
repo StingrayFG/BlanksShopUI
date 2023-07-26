@@ -1,0 +1,52 @@
+*
+{
+  box-sizing: border-box;
+}
+
+h2
+{
+  text-align: left;
+  font-size: 18px;
+  font-family: "Calibri";
+  margin: 0;
+  padding: 0.25rem;
+  color: #ffffff;
+}
+
+p
+{
+  font-size: 18px;
+  font-family: "Calibri";
+  margin: 0;
+  padding: 0.25rem;
+  color: #ffffff;
+}
+
+table
+{
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+  
+}
+
+.std
+{
+  width: 1000px;
+  margin: 0 auto;
+}
+
+html
+{
+  background-color: #181a1b
+}
+
+a:link {
+  color: rgb(0, 132, 255)
+}
+
+a:visited {
+  color: rgb(0, 132, 255)
+}
+
+

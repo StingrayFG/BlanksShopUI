@@ -1,0 +1,38 @@
+*
+{
+  box-sizing: border-box;
+}
+
+h2
+{
+  text-align: left;
+  font-size: 18px;
+  font-family: "Calibri";
+  margin: 0;
+  padding: 0.25rem;
+}
+
+p
+{
+  font-size: 18px;
+  font-family: "Calibri";
+  margin: 0;
+  padding: 0.25rem;
+}
+
+
+table
+{
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+  
+}
+
+.std
+{
+  width: 1000px;
+  margin: 0 auto;
+}
+
+
