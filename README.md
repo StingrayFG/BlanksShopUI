@@ -1,4 +1,4 @@
-This project implements web user interface for metal blanks shop using React. It includes simple catalog, products pages and authorization. Web interface is dependent on application backend (https://github.com/StingrayFG/BlanksShopBackend)
+This project implements web user interface for MetalBlanks shop application using React. It includes simple catalog, products pages and authorization. Web interface is dependent on application backend (https://github.com/StingrayFG/BlanksShopCore)
 
 Catalog page example:
 
