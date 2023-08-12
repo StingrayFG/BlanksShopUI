@@ -2,7 +2,7 @@ import './css/App.css';
 import './css/ShoppingCartPage.css';
 import React from 'react';
 import { Link, Navigate } from 'react-router-dom';
-import MetalBlank from './MetalBlank';
+import MetalBlank from '../../MetalBlank';
 
 class ShoppingCartPage extends React.Component {
 

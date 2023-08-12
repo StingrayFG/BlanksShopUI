@@ -1,4 +1,3 @@
-import './css/App.css';
 import React from 'react';
 
 class ContactsInfo extends React.Component {

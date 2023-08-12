@@ -2,8 +2,8 @@ import './css/App.css';
 import './css/ProductTable.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import MetalBlank from './MetalBlank';
-import {LoginContext} from './LoginContext';
+import MetalBlank from '../../MetalBlank';
+import {LoginContext} from '../../LoginContext';
 
 class CardPage extends React.Component {
 

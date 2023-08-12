@@ -2,10 +2,7 @@
 {
   background-color: rgb(29, 31, 33);
   text-align: left;
-  font-size: 18px;
-  font-family: "Calibri";
   height: 1.5rem;
-
 }
 
 .link-menu
@@ -18,5 +15,6 @@
 .link-menu-right
 {
   padding-right: 1rem;
+  margin: 0.25rem;
   float: right;
 }

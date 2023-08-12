@@ -1,19 +1,15 @@
-import './css/App.css';
-import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import React from 'react';
-import Menu from './Menu';
-import Catalog from './Catalog';
-import CardPage from './CardPage';
-import CardPageWrap from './CardPageWrap';
-import PaymentsInfo from './PaymentsInfo';
-import LoginInfo from './LoginInfo';
-import ShoppingCartPage from './ShoppingCartPage';
-import ContactsInfo from './ContactsInfo';
-import LoginPage from './LoginPage';
-import SignUpPage from './SignUpPage';
 
-import {LoginContext} from './LoginContext';
+import Menu from './components/Layout/NavBar/Menu';
+import Catalog from './components/Views/CatalogPage/CatalogPage';;
+import CardPageWrap from './components/Views/CardPage/CardPageWrap';
+import PaymentsInfo from './components/Views/Information/PaymentsInfoPage/PaymentsInfoPage';
+import ShoppingCartPage from './Views/ShoppingCartPage/ShoppingCartPage';
+import ContactsInfo from './components/Views/Information/ContactsInfoPage/ContactsPage';
+import LoginPage from './components/Views/Account/LoginPage/LoginPage';
+import SignUpPage from './components/Views/Account/SignUpPage/SignUpPage';
+
 
 class App extends React.Component {
 

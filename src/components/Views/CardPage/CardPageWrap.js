@@ -1,5 +1,5 @@
 import { useLocation, Link } from "react-router-dom";
-import CardPage from "./CardPage";
+import CardPage from "./Views/CardPage/CardPage";
 
 const CardPageWrap = (props) => {
   const location = useLocation();

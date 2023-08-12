@@ -1,7 +1,7 @@
 import './css/App.css';
 import './css/Card.css';
 import React from 'react';
-import Card from './Card';
+import Card from '../Product/Card';
 
 class Catalog extends React.Component {
 

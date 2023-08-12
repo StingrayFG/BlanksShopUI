@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 
 class LoginInfo extends React.Component {
 
-  //<Link to="/account" className="link-menu-right">Аккаунт</Link>
-
   render() {
     if (this.props.user.id == 0){
       return(
