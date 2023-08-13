@@ -1,14 +1,15 @@
 import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import React from 'react';
 
-import Menu from './components/Layout/NavBar/Menu';
-import Catalog from './components/Views/CatalogPage/CatalogPage';;
-import CardPageWrap from './components/Views/CardPage/CardPageWrap';
-import PaymentsInfo from './components/Views/Information/PaymentsInfoPage/PaymentsInfoPage';
-import ShoppingCartPage from './Views/ShoppingCartPage/ShoppingCartPage';
-import ContactsInfo from './components/Views/Information/ContactsInfoPage/ContactsPage';
-import LoginPage from './components/Views/Account/LoginPage/LoginPage';
-import SignUpPage from './components/Views/Account/SignUpPage/SignUpPage';
+import Menu from './components/layout/NavBar/Menu/Menu.js';
+import CatalogPage from './components/views/CatalogPage/CatalogPage.js';
+import CardPage from './components/views/CardPage/CardPage';
+import CardPageWrap from './components/views/CardPage/CardPageWrap';
+import PaymentsInfo from './components/views/Information/PaymentsInfoPage/PaymentsInfoPage';
+import ShoppingCartPage from './components/views/ShoppingCartPage/ShoppingCartPage';
+import ContactsInfo from './components/views/Information/ContactsInfoPage/ContactsPage';
+import LoginPage from './components/views/Account/LoginPage/LoginPage';
+import SignUpPage from './components/views/Account/SignUpPage/SignUpPage';
 
 
 class App extends React.Component {
@@ -34,7 +35,7 @@ class App extends React.Component {
             <Menu user={this.state.user}/>
             <Routes>   
               <Route path="/" element={<Navigate replace to="/catalog" />} />
-              <Route path="/catalog" element={<Catalog user={this.state.user}/>} />
+              <Route path="/catalog" element={<CatalogPage user={this.state.user}/>} />
               <Route path="/product" element={<CardPageWrap user={this.state.user}/>} />
               <Route path="/payments" element={<PaymentsInfo />} /> 
               <Route path="/contacts" element={<ContactsInfo />} /> 
