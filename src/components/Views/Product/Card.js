@@ -45,7 +45,7 @@ class Card extends React.Component {
               <td className="card-product"> 
               
               {this.state.posts.products.map(element => (
-                <Product json={element} user={this.props.user}></Product>
+                <Product key={element.id} json={element} user={this.props.user}></Product>
               ))}
 
               </td>

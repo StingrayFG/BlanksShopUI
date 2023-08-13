@@ -36,7 +36,7 @@ class Catalog extends React.Component {
           <h2>Catalog</h2>
           
           {this.state.cards.map((element) => (
-            <ProductCard json={element} user={this.props.user}></ProductCard>
+            <ProductCard key={element.id} json={element} user={this.props.user}></ProductCard>
           ))}
 
         </div>   

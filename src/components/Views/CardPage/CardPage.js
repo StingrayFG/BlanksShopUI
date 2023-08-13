@@ -40,7 +40,7 @@ class CardPage extends React.Component {
               <td className="products-table-cell"><p>In stock</p></td>
             </tr>
             {this.state.posts.products.map(element => (
-                <Product json={element} page_mode={true} user={this.props.user} updateTable={this.manualUpdate}></Product>
+                <Product key={element.id} json={element} page_mode={true} user={this.props.user} updateTable={this.manualUpdate}></Product>
             ))}
               
            
