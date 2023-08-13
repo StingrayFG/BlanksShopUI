@@ -1,14 +1,15 @@
-import './css/App.css';
 import React from 'react';
-import  { Redirect, useHistory } from 'react-router-dom'
-import './css/LoginPage.css';
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
+
+import '../LoginPage.styles.css';
+
+import api from 'api';
 
 const LoginPage = (props) => {
 
   const tryLogin = (event) => {
     event.preventDefault()
-    fetch('https://localhost:44325/customers/get_by_login?phoneNumber=' + login + '&password=' + password)
+    const res = fetch(api.baseUrl + 'customer/get/bylogin?login=' + login + '&password=' + password)
         .then(res => res.json())
         .then(res => {
           props.setUser(res)
@@ -26,14 +27,12 @@ const LoginPage = (props) => {
   const [login, setLogin] = useState("");
   const handleLoginChange = event =>{
     let login = event.target.value;
-    console.log(event.target.value); 
     setLogin(login);
   } 
 
   const [password, setPassword] = useState("");
   const handlePasswordChange = event =>{
     let password = event.target.value;
-    console.log(event.target.value); 
     setPassword(password);
   } 
 

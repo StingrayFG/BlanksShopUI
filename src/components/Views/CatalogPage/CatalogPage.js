@@ -1,27 +1,32 @@
-import './css/App.css';
-import './css/Card.css';
 import React from 'react';
-import Card from '../Product/Card';
+
+import ProductCard from '../Product/Card'
+import api from '../../../api';
 
 class Catalog extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {posts: {}};
+    this.state = {cards: {}};
     this.state.isMounted = false;
     
+    this.getCards = this.getCards.bind(this);
   };
 
+  async getCards(){
+    const res = await fetch(api.baseUrl + 'catalog/get/all')
+      .then(res => res.json())
+      .then(res => {
+          this.setState({
+              cards: res
+          })
+          this.setState({isMounted: true})
+      })
+      .catch(error => console.error(error))
+  }
+
   componentDidMount() {
-    fetch('https://localhost:44325/metalblanks/get_cards')
-        .then(res => res.json())
-        .then(res => {
-            this.setState({
-                posts: res
-            })
-            this.setState({isMounted: true})
-        })
-        .catch(error => console.error(error))
+    this.getCards()
   }
 
   render() {
@@ -30,8 +35,8 @@ class Catalog extends React.Component {
         <div className="catalog std">  
           <h2>Catalog</h2>
           
-          {this.state.posts.cards.map((element) => (
-            <Card json={element} user={this.props.user}></Card>
+          {this.state.cards.map((element) => (
+            <ProductCard json={element} user={this.props.user}></ProductCard>
           ))}
 
         </div>   

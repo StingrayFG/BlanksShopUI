@@ -1,8 +1,9 @@
-import '~/Menu.css';
 import React from 'react';
 import { Link } from "react-router-dom";
 
-import LoginInfo from '~/LoginInfo/LoginInfo';
+import LoginInfo from '../LoginInfo/LoginInfo';
+
+import '../Menu.styles.css';
 
 class Menu extends React.Component {
 

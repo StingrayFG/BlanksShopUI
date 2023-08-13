@@ -1,8 +1,10 @@
-import './css/App.css';
-import './css/LoginPage.css';
 import React from 'react';
 import {Navigate} from 'react-router-dom';
 import {useState} from 'react';
+
+import '../LoginPage.styles.css';
+
+import api from 'api';
 
 const SignUpPage = (props) => {
 
@@ -10,15 +12,15 @@ const SignUpPage = (props) => {
     event.preventDefault()
     if ((name == '') && (phoneNumber == '') && (password == ''))
     {
-      alert("Please, enter information in all fields")
+      alert("Please, fill all required fields")
     }
     if ((name != '') && (phoneNumber != '') && (password != ''))
     {
       const requestOptions = {
-        method: 'PUT',
+        method: 'POST',
       };
       
-      fetch('https://localhost:44325/customers/add?name=' + name + '&phoneNumber=' + phoneNumber + '&password=' + password, requestOptions)
+      fetch(api.baseUrl + 'customer/add?name=' + name + '&phoneNumber=' + phoneNumber + '&password=' + password, requestOptions)
         .then(res =>
         {
           if (!res.ok) {
@@ -37,7 +39,6 @@ const SignUpPage = (props) => {
 
   const handleNameChange = event =>{
     let name = event.target.value;
-    console.log(event.target.value); 
     setName(name);
   } 
 
@@ -45,7 +46,6 @@ const SignUpPage = (props) => {
 
   const handlephoneNumberChange = event =>{
     let phoneNumber = event.target.value;
-    console.log(event.target.value); 
     setphoneNumber(phoneNumber);
   } 
 
@@ -53,7 +53,6 @@ const SignUpPage = (props) => {
 
   const handlePasswordChange = event =>{
     let password = event.target.value;
-    console.log(event.target.value); 
     setPassword(password);
   } 
 

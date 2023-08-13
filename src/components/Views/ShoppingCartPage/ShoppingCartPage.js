@@ -1,8 +1,12 @@
-import './css/App.css';
-import './css/ShoppingCartPage.css';
 import React from 'react';
-import { Link, Navigate } from 'react-router-dom';
-import MetalBlank from '../../MetalBlank';
+import { Navigate } from 'react-router-dom';
+
+import Product from '../Product/Product'
+
+import './ShoppingCartPage.styles.css'
+
+import api from 'api';
+
 
 class ShoppingCartPage extends React.Component {
 
@@ -21,33 +25,33 @@ class ShoppingCartPage extends React.Component {
   }
 
   async getCart() {
-    const res = await fetch('https://localhost:44325/shoppingcarts/get_current_cart?customerID=' + this.props.user.id)
+    const res = await fetch(api.baseUrl + 'shoppingcart/get/currentbycustomer?customerID=' + this.props.user.id)
         .then(res => res.json())
         .then(res => {
             this.setState({
                 posts: res
             })
             this.setState({isMounted: true})
+            console.log(res)
         })
         .catch(error => console.error(error))
 
-    console.log("cart fetch");
     console.log(this.state.posts)
   }
 
   createOrder()
   {
-    if ((this.props.user.id != 0) && (this.state.posts.metalBlanks.length != 0))
+    if ((this.props.user.id != 0) && (this.state.posts.products.length != 0))
     {
       const requestOptions = {
         method: 'PUT',
       };
       console.log(this.state.posts);
-      fetch('https://localhost:44325/orders/add?customerID=' + this.props.user.id + '&paymentMethod=cash', requestOptions)
+      fetch(api.baseUrl + 'order/add?customerID=' + this.props.user.id + '&paymentMethod=cash', requestOptions)
         .then(res =>
           {
             if (!res.ok) {
-              alert("Something went wrong")}
+              alert("Something went wrong, try again later")}
             else {
               alert("Order created")
               this.setState({isCreated: true})}
@@ -82,9 +86,9 @@ class ShoppingCartPage extends React.Component {
                 <td className="products-table-cell"><p>Length</p></td>
                 <td className="products-table-cell"><p>Price</p></td>
                 <td className="products-table-cell"><p>Count</p></td>
-              </tr>
-              {this.state.posts.metalBlanks.map(element => (
-                <MetalBlank json={element} cart_mode={true} user={this.props.user} updateTable={this.getCart}></MetalBlank>
+              </tr> 
+              {this.state.posts.products.map(element => (
+                <Product json={element} cart_mode={true} user={this.props.user} updateTable={this.getCart}></Product>
               ))}
             </tbody>
           </table>

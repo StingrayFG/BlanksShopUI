@@ -1,9 +1,5 @@
-import './css/App.css';
-import './css/ProductTable.css';
 import React from 'react';
-import { Link } from 'react-router-dom';
-import MetalBlank from '../../MetalBlank';
-import {LoginContext} from '../../LoginContext';
+import Product from '../Product/Product';
 
 class CardPage extends React.Component {
 
@@ -30,9 +26,9 @@ class CardPage extends React.Component {
     else return(
       <div className="std">
         <h2>
-        {this.state.posts.type.slice(0,1).toUpperCase() + 
-        this.state.posts.type.slice(1, this.state.posts.type.length)}&nbsp;
-        {this.state.posts.material}
+        {this.state.posts.name.slice(0,1).toUpperCase() + 
+        this.state.posts.name.slice(1, this.state.posts.name.length)}&nbsp;
+        {this.state.posts.materialName}
         </h2>
         <table className="products-table">
           <tbody>
@@ -43,8 +39,8 @@ class CardPage extends React.Component {
               <td className="products-table-cell"><p>Price</p></td>
               <td className="products-table-cell"><p>In stock</p></td>
             </tr>
-            {this.state.posts.metalBlanks.map(element => (
-                <MetalBlank json={element} page_mode={true} user={this.props.user} updateTable={this.manualUpdate}></MetalBlank>
+            {this.state.posts.products.map(element => (
+                <Product json={element} page_mode={true} user={this.props.user} updateTable={this.manualUpdate}></Product>
             ))}
               
            

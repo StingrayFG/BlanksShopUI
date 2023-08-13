@@ -1,8 +1,8 @@
-import './css/App.css';
-import './css/Card.css';
-import './css/ProductTable.css';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import './ProductTable.styles.css';
+
+import api from 'api';
+
 
 class MetalBlank extends React.Component {
   
@@ -33,12 +33,12 @@ class MetalBlank extends React.Component {
     else
     {
       const requestOptions = {
-        method: 'PUT',
+        method: 'POST',
       };
       console.log(this.state.posts);
-      const res = fetch('https://localhost:44325/shoppingcarts/add?customerID=' + this.props.user.id + '&partID=' + 
-      this.state.posts.id + '&partCount=1&isProcessed=false', requestOptions)
-      .then(this.state.posts.count -= 1)
+      const res = await fetch(api.baseUrl + 'shoppingcart/add/product?customerID=' + this.props.user.id + '&productID=' + 
+      this.state.posts.id, requestOptions)
+        .then(this.state.posts.count -= 1)
       this.forceUpdate();
     }
   }
@@ -51,8 +51,7 @@ class MetalBlank extends React.Component {
         method: 'DELETE',
       };
       console.log(this.state.posts);
-      const res = await fetch('https://localhost:44325/shoppingcarts/delete_by_customer_and_part?customerID=' + this.props.user.id + 
-      '&partID=' + this.state.posts.id + '&isProcessed=false', requestOptions)
+      const res = await fetch(api.baseUrl + 'shoppingcart/delete/product?customerID=' + this.props.user.id + '&productID=' + this.state.posts.id, requestOptions)
       this.props.updateTable();
     }
   }
@@ -61,9 +60,9 @@ class MetalBlank extends React.Component {
     if (this.state.isMounted == false) return null;
     else if (this.props.page_mode == true) return(
       <tr>
-        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.width}</p></td>  
-        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.height}</p></td>  
-        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.length}</p></td>  
+        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.dimensions.width}</p></td>  
+        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.dimensions.height}</p></td>  
+        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.dimensions.length}</p></td>  
         <td className="products-table-cell"><p className="product-parameters">{this.state.posts.price}</p></td>  
         <td className="products-table-cell"><p className="product-parameters">{this.state.posts.count}</p></td> 
         <td className="products-table-button-cell">
@@ -74,13 +73,13 @@ class MetalBlank extends React.Component {
     else if (this.props.cart_mode == true) return(
       <tr>
         <td className="products-table-cell"><p className="product-parameters">
-          {this.state.posts.type.slice(0,1).toUpperCase() + 
-          this.state.posts.type.slice(1, this.state.posts.type.length)}&nbsp;
-          {this.state.posts.material}
+          {this.state.posts.name.slice(0,1).toUpperCase() + 
+          this.state.posts.name.slice(1, this.state.posts.name.length)}&nbsp;
+          {this.state.posts.material.name}
         </p></td>
-        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.width}</p></td>  
-        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.height}</p></td>  
-        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.length}</p></td>  
+        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.dimensions.width}</p></td>  
+        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.dimensions.height}</p></td>  
+        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.dimensions.length}</p></td>  
         <td className="products-table-cell"><p className="product-parameters">{this.state.posts.price}</p></td>  
         <td className="products-table-cell"><p className="product-parameters">{this.state.posts.count}</p></td>  
         <td className="products-table-button-cell">
@@ -90,7 +89,7 @@ class MetalBlank extends React.Component {
     )
     else return(
       <div>
-        <p className="link-product">{this.state.posts.width}x{this.state.posts.height}x{this.state.posts.length}</p>  
+        <p className="link-product">{this.state.posts.dimensions.width}x{this.state.posts.dimensions.height}x{this.state.posts.dimensions.length}</p>  
       </div>        
     )
   }

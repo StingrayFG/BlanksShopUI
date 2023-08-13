@@ -1,8 +1,9 @@
-import './css/App.css';
-import './css/Card.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import MetalBlank from './MetalBlank';
+
+import './Card.styles.css'
+
+import Product from './Product';
 
 class Card extends React.Component {
 
@@ -31,9 +32,9 @@ class Card extends React.Component {
             <tr>
               <td className="card-header" colSpan="2">
                 <Link to="/product" state={this.props} className="link-card">
-                {this.state.posts.type.slice(0,1).toUpperCase() + 
-                this.state.posts.type.slice(1, this.state.posts.type.length)}&nbsp;
-                {this.state.posts.material}
+                {this.state.posts.name.slice(0,1).toUpperCase() + 
+                this.state.posts.name.slice(1, this.state.posts.name.length)}&nbsp;
+                {this.state.posts.materialName}
                 </Link>
               </td>
             </tr>
@@ -43,8 +44,8 @@ class Card extends React.Component {
               </td>
               <td className="card-product"> 
               
-              {this.state.posts.metalBlanks.map(element => (
-                <MetalBlank json={element} user={this.props.user}></MetalBlank>
+              {this.state.posts.products.map(element => (
+                <Product json={element} user={this.props.user}></Product>
               ))}
 
               </td>

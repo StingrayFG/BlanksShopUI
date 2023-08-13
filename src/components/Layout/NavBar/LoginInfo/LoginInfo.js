@@ -1,7 +1,7 @@
-import './css/App.css';
 import React from 'react';
-import './css/Menu.css';
 import { Link } from 'react-router-dom';
+
+import '../Menu.styles.css';
 
 class LoginInfo extends React.Component {
 
