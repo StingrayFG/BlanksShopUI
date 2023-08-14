@@ -2,7 +2,7 @@ import React from 'react';
 import './ProductTable.styles.css';
 
 import api from 'api';
-
+import store from 'store';
 
 class MetalBlank extends React.Component {
   
@@ -26,7 +26,7 @@ class MetalBlank extends React.Component {
 
   async addBlankToCart()
   {
-    if(this.props.user.id == 0)
+    if(store.getState().user.id == 0)
     {
       alert("You have to log in first!")
     }
@@ -36,7 +36,7 @@ class MetalBlank extends React.Component {
         method: 'POST',
       };
       console.log(this.state.posts);
-      const res = await fetch(api.baseUrl + 'shoppingcart/add/product?customerID=' + this.props.user.id + '&productID=' + 
+      const res = await fetch(api.baseUrl + 'shoppingcart/add/product?customerID=' + store.getState().user.id + '&productID=' + 
       this.state.posts.id, requestOptions)
         .then(this.state.posts.count -= 1)
       this.forceUpdate();
@@ -45,14 +45,15 @@ class MetalBlank extends React.Component {
 
   async removeBlankFromCart()
   {
-    if (this.props.user.id != 0)
+    if (store.getState().user.id != 0)
     {
       const requestOptions = {
         method: 'DELETE',
       };
       console.log(this.state.posts);
-      const res = await fetch(api.baseUrl + 'shoppingcart/delete/product?customerID=' + this.props.user.id + '&productID=' + this.state.posts.id, requestOptions)
+      const res = await fetch(api.baseUrl + 'shoppingcart/delete/product?customerID=' + store.getState().user.id + '&productID=' + this.state.posts.id, requestOptions)
       this.props.updateTable();
+      this.forceUpdate();
     }
   }
 

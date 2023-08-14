@@ -6,7 +6,7 @@ const CardPageWrap = (props) => {
   const state = location.state;
 
   return(
-    <CardPage json={state.json} user={state.user}></CardPage>
+    <CardPage json={state.json}></CardPage>
   ) 
   
 };

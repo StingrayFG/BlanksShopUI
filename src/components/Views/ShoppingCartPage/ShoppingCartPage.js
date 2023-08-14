@@ -5,6 +5,7 @@ import Product from '../Product/Product'
 
 import './ShoppingCartPage.styles.css'
 
+import store from "store";
 import api from 'api';
 
 
@@ -25,29 +26,27 @@ class ShoppingCartPage extends React.Component {
   }
 
   async getCart() {
-    const res = await fetch(api.baseUrl + 'shoppingcart/get/currentbycustomer?customerID=' + this.props.user.id)
+    const res = await fetch(api.baseUrl + 'shoppingcart/get/currentbycustomer?customerID=' + store.getState().user.id)
         .then(res => res.json())
         .then(res => {
             this.setState({
                 posts: res
             })
             this.setState({isMounted: true})
-            console.log(res)
         })
         .catch(error => console.error(error))
-
-    console.log(this.state.posts)
+        this.forceUpdate();
   }
 
   createOrder()
   {
-    if ((this.props.user.id != 0) && (this.state.posts.products.length != 0))
+    if ((store.getState().user.id != 0) && (this.state.posts.products.length != 0))
     {
       const requestOptions = {
-        method: 'PUT',
+        method: 'POST',
       };
       console.log(this.state.posts);
-      fetch(api.baseUrl + 'order/add?customerID=' + this.props.user.id + '&paymentMethod=cash', requestOptions)
+      fetch(api.baseUrl + 'order/add?customerID=' + store.getState().user.id + '&paymentMethod=cash', requestOptions)
         .then(res =>
           {
             if (!res.ok) {
@@ -71,7 +70,7 @@ class ShoppingCartPage extends React.Component {
       return( 
         <Navigate replace to="/catalog" />   
       )
-    else if (this.props.user.id != 0){
+    else if (store.getState().user.id != 0){
       return(
         <div className="std">
           <h2>
@@ -87,8 +86,8 @@ class ShoppingCartPage extends React.Component {
                 <td className="products-table-cell"><p>Price</p></td>
                 <td className="products-table-cell"><p>Count</p></td>
               </tr> 
-              {this.state.posts.products.map(element => (
-                <Product json={element} cart_mode={true} user={this.props.user} updateTable={this.getCart}></Product>
+              {this.state.posts.products.map((element) => (
+                <Product key={element.id} json={element} cart_mode={true} updateTable={this.getCart}></Product>
               ))}
             </tbody>
           </table>

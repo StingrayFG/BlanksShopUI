@@ -1,7 +1,8 @@
 import React from 'react';
 
 import ProductCard from '../Product/Card'
-import api from '../../../api';
+
+import api from 'api';
 
 class Catalog extends React.Component {
 
@@ -36,7 +37,7 @@ class Catalog extends React.Component {
           <h2>Catalog</h2>
           
           {this.state.cards.map((element) => (
-            <ProductCard key={element.id} json={element} user={this.props.user}></ProductCard>
+            <ProductCard key={element.id} json={element}></ProductCard>
           ))}
 
         </div>   
