@@ -1,4 +1,4 @@
-This project is a React based UI implementation for the BlanksShop application. It includes simple catalog, products pages and authorization. Web interface is dependent on the application backend (https://github.com/StingrayFG/BlanksShopCore)
+This project is a React based UI implementation for the BlanksShop application. It includes simple catalog, products pages and authorization. Web interface is dependent on the application backend: https://github.com/StingrayFG/BlanksShopCore
 
 Catalog page example:
 
