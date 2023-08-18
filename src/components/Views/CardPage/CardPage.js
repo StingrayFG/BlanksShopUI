@@ -1,5 +1,6 @@
 import React from 'react';
 import Product from '../Product/Product';
+import ProductTable from 'components/tables/Product/ProductTable';
 
 class CardPage extends React.Component {
 
@@ -30,23 +31,7 @@ class CardPage extends React.Component {
         this.state.posts.name.slice(1, this.state.posts.name.length)}&nbsp;
         {this.state.posts.materialName}
         </h2>
-        <table className="products-table">
-          <tbody>
-            <tr>
-              <td className="products-table-cell"><p>Width</p></td>
-              <td className="products-table-cell"><p>Height</p></td>
-              <td className="products-table-cell"><p>Length</p></td>
-              <td className="products-table-cell"><p>Price</p></td>
-              <td className="products-table-cell"><p>In stock</p></td>
-            </tr>
-            {this.state.posts.products.map(element => (
-                <Product key={element.id} json={element} page_mode={true} updateTable={this.manualUpdate}></Product>
-            ))}
-              
-           
-            
-          </tbody>
-        </table>
+        <ProductTable mode="cart" products={this.state.posts.products}/>
       </div>           
     )}
 }

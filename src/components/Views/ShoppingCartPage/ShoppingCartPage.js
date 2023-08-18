@@ -7,6 +7,7 @@ import './ShoppingCartPage.styles.css'
 
 import store from "store";
 import api from 'api';
+import ProductTable from 'components/tables/Product/ProductTable';
 
 
 class ShoppingCartPage extends React.Component {
@@ -66,7 +67,7 @@ class ShoppingCartPage extends React.Component {
 
   render() {
     if (this.state.isMounted == false) return null;
-    if (this.state.isCreated == true) 
+    else if (this.state.isCreated == true) 
       return( 
         <Navigate replace to="/catalog" />   
       )
@@ -76,21 +77,7 @@ class ShoppingCartPage extends React.Component {
           <h2>
           Cart
           </h2>
-          <table className="products-table">
-            <tbody>
-              <tr>
-                <td className="products-table-type-cell"><p>Type</p></td>
-                <td className="products-table-cell"><p>Width</p></td>
-                <td className="products-table-cell"><p>Height</p></td>
-                <td className="products-table-cell"><p>Length</p></td>
-                <td className="products-table-cell"><p>Price</p></td>
-                <td className="products-table-cell"><p>Count</p></td>
-              </tr> 
-              {this.state.posts.products.map((element) => (
-                <Product key={element.id} json={element} cart_mode={true} updateTable={this.getCart}></Product>
-              ))}
-            </tbody>
-          </table>
+          <ProductTable mode="cart" products={this.state.posts.products}/>
   
           <button className='cart-confirm-button' onClick={this.createOrder}><p>Create order</p></button>
           <p className='cart-price'>In total: {this.state.posts.totalPrice}</p> 
