@@ -1,10 +1,11 @@
 import React from 'react';
-import './ProductTable.styles.css';
+
+import 'components/tables/Product/ProductTable.styles.css';
 
 import api from 'api';
 import store from 'store';
 
-class MetalBlank extends React.Component {
+class Product extends React.Component {
   
   constructor(props) {
     super(props);
@@ -59,7 +60,7 @@ class MetalBlank extends React.Component {
 
   render() {
     if (this.state.isMounted == false) return null;
-    else if (this.props.page_mode == true) return(
+    else if (this.props.mode == "page") return(
       <tr>
         <td className="products-table-cell"><p className="product-parameters">{this.state.posts.dimensions.width}</p></td>  
         <td className="products-table-cell"><p className="product-parameters">{this.state.posts.dimensions.height}</p></td>  
@@ -71,7 +72,7 @@ class MetalBlank extends React.Component {
         </td>
       </tr>        
     )
-    else if (this.props.cart_mode == true) return(
+    else if (this.props.mode == "cart") return(
       <tr>
         <td className="products-table-cell"><p className="product-parameters">
           {this.state.posts.name.slice(0,1).toUpperCase() + 
@@ -89,12 +90,10 @@ class MetalBlank extends React.Component {
       </tr>  
     )
     else return(
-      <div>
-        <p className="link-product">{this.state.posts.dimensions.width}x{this.state.posts.dimensions.height}x{this.state.posts.dimensions.length}</p>  
-      </div>        
+        <p className="link-product">{this.state.posts.dimensions.width}x{this.state.posts.dimensions.height}x{this.state.posts.dimensions.length}</p>        
     )
   }
 }
 
 
-export default MetalBlank;
+export default Product;
