@@ -41,7 +41,7 @@ class ProductTable extends React.Component {
                 </table>
             )
         }    
-        else if (this.props.mode == "cart")
+        else if (this.props.mode == "page")
         {
             return(
                 <table className="products-table">
@@ -53,7 +53,7 @@ class ProductTable extends React.Component {
                             <td className="products-table-cell"><p>Price</p></td>
                             <td className="products-table-cell"><p>In stock</p></td>
                         </tr>
-                        {this.state.posts.products.map(element => (
+                        {this.props.products.map(element => (
                             <Product key={element.id} json={element} mode={this.props.mode} updateTable={this.updateTable}></Product>
                         ))} 
                     </tbody>

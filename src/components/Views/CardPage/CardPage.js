@@ -1,5 +1,4 @@
 import React from 'react';
-import Product from '../Product/Product';
 import ProductTable from 'components/tables/Product/ProductTable';
 
 class CardPage extends React.Component {
@@ -8,8 +7,6 @@ class CardPage extends React.Component {
     super(props);
     this.state = {posts: {}};
     this.state.isMounted = false;
-
-    
   };
 
   componentDidMount() {
@@ -22,7 +19,6 @@ class CardPage extends React.Component {
   };
 
   render() {
-    
     if (this.state.isMounted == false) return null;
     else return(
       <div className="std">
@@ -31,7 +27,7 @@ class CardPage extends React.Component {
         this.state.posts.name.slice(1, this.state.posts.name.length)}&nbsp;
         {this.state.posts.materialName}
         </h2>
-        <ProductTable mode="cart" products={this.state.posts.products}/>
+        <ProductTable mode="page" products={this.state.posts.products}/>
       </div>           
     )}
 }
