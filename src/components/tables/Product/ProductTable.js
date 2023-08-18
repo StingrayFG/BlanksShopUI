@@ -14,11 +14,6 @@ class ProductTable extends React.Component {
         super(props);
     };
 
-    updateTable()
-    {
-        this.forceUpdate();
-    }
-
     render()
     {
         if (this.props.mode == "cart")
@@ -35,7 +30,7 @@ class ProductTable extends React.Component {
                             <td className="products-table-cell"><p>Count</p></td>
                         </tr> 
                         {this.props.products.map((element) => (
-                            <Product key={element.id} json={element} mode={this.props.mode} updateTable={this.updateTable}></Product>
+                            <Product key={element.id} json={element} mode={this.props.mode} updateTable={this.props.updateTable}></Product>
                         ))}
                     </tbody>
                 </table>
@@ -54,7 +49,7 @@ class ProductTable extends React.Component {
                             <td className="products-table-cell"><p>In stock</p></td>
                         </tr>
                         {this.props.products.map(element => (
-                            <Product key={element.id} json={element} mode={this.props.mode} updateTable={this.updateTable}></Product>
+                            <Product key={element.id} json={element} mode={this.props.mode} updateTable={this.props.updateTable}></Product>
                         ))} 
                     </tbody>
                 </table>
