@@ -12,9 +12,6 @@ class Order extends React.Component {
     super(props);
     this.state = {posts: {}};
     this.state.isMounted = false;
-
-    this.addBlankToCart = this.addBlankToCart.bind(this);
-    this.removeBlankFromCart = this.removeBlankFromCart.bind(this);
   };
 
   componentDidMount() {
@@ -30,10 +27,12 @@ class Order extends React.Component {
     if (this.state.isMounted == false) return null;
     else return(
       <tr>
-        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.orderCreationDate}</p></td>  
-        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.price}</p></td>  
-        <ProductTable mode="cart" products={this.state.posts.shoppingCart.products}/>
-      </tr>        
+        <tr>
+          <td className="products-table-cell"><p className="product-parameters">{this.state.posts.orderCreationDate}</p></td>  
+          <td className="products-table-cell"><p className="product-parameters">{this.state.posts.price}</p></td>         
+        </tr>    
+          <ProductTable mode="order" products={this.state.posts.shoppingCart.products}/>
+      </tr> 
     )
   }
 }
