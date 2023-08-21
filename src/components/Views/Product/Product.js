@@ -36,7 +36,7 @@ class Product extends React.Component {
       const requestOptions = {
         method: 'POST',
       };
-      console.log(this.state.posts);
+      //console.log(this.state.posts);
       const res = await fetch(api.baseUrl + 'shoppingcart/add/product?customerID=' + store.getState().user.id + '&productID=' + 
       this.state.posts.id, requestOptions)
         .then(this.state.posts.count -= 1)
@@ -51,7 +51,7 @@ class Product extends React.Component {
       const requestOptions = {
         method: 'DELETE',
       };
-      console.log(this.state.posts);
+      //console.log(this.state.posts);
       const res = await fetch(api.baseUrl + 'shoppingcart/delete/product?customerID=' + store.getState().user.id + '&productID=' + this.state.posts.id, requestOptions)
       this.props.updateTable();
       this.forceUpdate();
@@ -87,6 +87,20 @@ class Product extends React.Component {
         <td className="products-table-button-cell">
           <button className="products-table-button" onClick={this.removeBlankFromCart}><p>Remove</p></button>
         </td>
+      </tr>  
+    )
+    else if (this.props.mode == "order") return(
+      <tr>
+        <td className="products-table-cell"><p className="product-parameters">
+          {this.state.posts.name.slice(0,1).toUpperCase() + 
+          this.state.posts.name.slice(1, this.state.posts.name.length)}&nbsp;
+          {this.state.posts.material.name}
+        </p></td>
+        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.dimensions.width}</p></td>  
+        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.dimensions.height}</p></td>  
+        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.dimensions.length}</p></td>  
+        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.price}</p></td>  
+        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.count}</p></td>  
       </tr>  
     )
     else return(

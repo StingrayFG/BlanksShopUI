@@ -55,6 +55,26 @@ class ProductTable extends React.Component {
                 </table>
             )
         }
+        else if (this.props.mode == "order")
+        {
+            return(
+                <table className="products-table">
+                    <tbody>
+                        <tr>
+                            <td className="products-table-type-cell"><p>Type</p></td>
+                            <td className="products-table-cell"><p>Width</p></td>
+                            <td className="products-table-cell"><p>Height</p></td>
+                            <td className="products-table-cell"><p>Length</p></td>
+                            <td className="products-table-cell"><p>Price</p></td>
+                            <td className="products-table-cell"><p>Count</p></td>
+                        </tr>
+                        {this.props.products.map(element => (
+                            <Product key={element.id} json={element} mode={this.props.mode} updateTable={this.props.updateTable}></Product>
+                        ))} 
+                    </tbody>
+                </table>
+            )
+        }
     }
 }
 
