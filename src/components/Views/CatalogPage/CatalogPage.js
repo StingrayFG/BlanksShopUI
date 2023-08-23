@@ -3,6 +3,7 @@ import React from 'react';
 import ProductCard from '../Product/Card'
 
 import api from 'api';
+import service from './CatalogPage.service'
 
 class Catalog extends React.Component {
 
@@ -14,9 +15,12 @@ class Catalog extends React.Component {
     this.getCards = this.getCards.bind(this);
   };
 
+  componentDidMount() {
+    this.getCards()
+  }
+
   async getCards(){
-    const res = await fetch(api.baseUrl + 'catalog/get/all')
-      .then(res => res.json())
+    await service.getCards()
       .then(res => {
           this.setState({
               cards: res
@@ -24,10 +28,6 @@ class Catalog extends React.Component {
           this.setState({isMounted: true})
       })
       .catch(error => console.error(error))
-  }
-
-  componentDidMount() {
-    this.getCards()
   }
 
   render() {
