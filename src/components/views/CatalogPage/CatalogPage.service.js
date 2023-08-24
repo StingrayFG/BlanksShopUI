@@ -1,7 +1,5 @@
 import React from 'react';
 
-import ProductCard from '../Product/Card'
-
 import api from 'api';
 
 const CatalogService = {
