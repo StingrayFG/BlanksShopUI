@@ -2,7 +2,7 @@ import React from 'react';
 
 import api from 'api';
 
-const CatalogService = {
+const CatalogPageService = {
 
   getCards: async function () {
     return await fetch(api.baseUrl + 'catalog/get/all', {method: 'GET'})
@@ -14,4 +14,4 @@ const CatalogService = {
   }
 }
 
-export default CatalogService;
+export default CatalogPageService;
