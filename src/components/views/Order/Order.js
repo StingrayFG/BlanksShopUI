@@ -29,9 +29,13 @@ class Order extends React.Component {
       <tr>
         <tr>
           <td className="products-table-cell"><p className="product-parameters">{this.state.posts.orderCreationDate}</p></td>  
+        </tr>   
+        <tr>
           <td className="products-table-cell"><p className="product-parameters">{this.state.posts.price}</p></td>         
-        </tr>    
+        </tr>
           <ProductTable mode="order" products={this.state.posts.shoppingCart.products}/>
+        
+          
       </tr> 
     )
   }

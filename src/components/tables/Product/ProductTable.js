@@ -58,8 +58,8 @@ class ProductTable extends React.Component {
         else if (this.props.mode == "order")
         {
             return(
-                <table className="products-table">
-                    <tbody>
+                
+                    <tr>
                         <tr>
                             <td className="products-table-type-cell"><p>Type</p></td>
                             <td className="products-table-cell"><p>Width</p></td>
@@ -71,8 +71,8 @@ class ProductTable extends React.Component {
                         {this.props.products.map(element => (
                             <Product key={element.id} json={element} mode={this.props.mode} updateTable={this.props.updateTable}></Product>
                         ))} 
-                    </tbody>
-                </table>
+                    </tr>
+               
             )
         }
     }
