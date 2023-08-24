@@ -11,7 +11,7 @@ import '../LoginPage.styles.css';
 
 import store from "store";
 import api from 'api';
-import services from './AccountPage.services'
+import services from './AccountPage.service'
 
 const AccountPage = ({}) => {
 
