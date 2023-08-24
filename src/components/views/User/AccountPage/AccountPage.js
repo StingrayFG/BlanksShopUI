@@ -11,6 +11,7 @@ import '../LoginPage.styles.css';
 
 import store from "store";
 import api from 'api';
+import services from './AccountPage.services'
 
 const AccountPage = ({}) => {
 
@@ -29,8 +30,7 @@ const AccountPage = ({}) => {
   };
 
   async function getOrders () {
-    await fetch(api.baseUrl + 'order/get/bycustomer?customerID=' + store.getState().user.id)
-      .then(res => res.json())
+    await services.getOrders(store.getState().user.id)
       .then(res => {
         console.log(res);
         setOrdersList(res);
