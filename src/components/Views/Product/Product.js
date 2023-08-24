@@ -4,6 +4,7 @@ import 'components/tables/Product/ProductTable.styles.css';
 
 import api from 'api';
 import store from 'store';
+import service from './Product.service'
 
 class Product extends React.Component {
   
@@ -12,8 +13,8 @@ class Product extends React.Component {
     this.state = {posts: {}};
     this.state.isMounted = false;
 
-    this.addBlankToCart = this.addBlankToCart.bind(this);
-    this.removeBlankFromCart = this.removeBlankFromCart.bind(this);
+    this.addToCart = this.addToCart.bind(this);
+    this.removeFromCart = this.removeFromCart.bind(this);
   };
 
   componentDidMount() {
@@ -25,7 +26,7 @@ class Product extends React.Component {
     })
   };
 
-  async addBlankToCart()
+  async addToCart()
   {
     if(store.getState().user.id == 0)
     {
@@ -33,26 +34,17 @@ class Product extends React.Component {
     }
     else
     {
-      const requestOptions = {
-        method: 'POST',
-      };
-      //console.log(this.state.posts);
-      const res = await fetch(api.baseUrl + 'shoppingcart/add/product?customerID=' + store.getState().user.id + '&productID=' + 
-      this.state.posts.id, requestOptions)
+      await service.addToCart(store.getState().user.id, this.state.posts.id)
         .then(this.state.posts.count -= 1)
       this.forceUpdate();
     }
   }
 
-  async removeBlankFromCart()
+  async removeFromCart()
   {
     if (store.getState().user.id != 0)
     {
-      const requestOptions = {
-        method: 'DELETE',
-      };
-      //console.log(this.state.posts);
-      const res = await fetch(api.baseUrl + 'shoppingcart/delete/product?customerID=' + store.getState().user.id + '&productID=' + this.state.posts.id, requestOptions)
+      await service.removeFromCart(store.getState().user.id, this.state.posts.id)
       this.props.updateTable();
       this.forceUpdate();
     }
@@ -68,7 +60,7 @@ class Product extends React.Component {
         <td className="products-table-cell"><p className="product-parameters">{this.state.posts.price}</p></td>  
         <td className="products-table-cell"><p className="product-parameters">{this.state.posts.count}</p></td> 
         <td className="products-table-button-cell">
-          <button className="products-table-button" onClick={this.addBlankToCart}><p>Add to cart</p></button>
+          <button className="products-table-button" onClick={this.addToCart}><p>Add to cart</p></button>
         </td>
       </tr>        
     )
@@ -85,7 +77,7 @@ class Product extends React.Component {
         <td className="products-table-cell"><p className="product-parameters">{this.state.posts.price}</p></td>  
         <td className="products-table-cell"><p className="product-parameters">{this.state.posts.count}</p></td>  
         <td className="products-table-button-cell">
-          <button className="products-table-button" onClick={this.removeBlankFromCart}><p>Remove</p></button>
+          <button className="products-table-button" onClick={this.removeFromCart}><p>Remove</p></button>
         </td>
       </tr>  
     )
