@@ -2,6 +2,8 @@ import React from 'react';
 
 import ProductTable from 'components/tables/Product/ProductTable';
 
+import './Order.styles.css'
+
 import api from 'api';
 import store from 'store';
 
@@ -24,18 +26,18 @@ class Order extends React.Component {
   };
 
   render() {
-    if (this.state.isMounted == false) return null;
+    if (this.state.isMounted === false) return null;
     else return(
-      <tr>
-        <tr>
-          <td className="products-table-cell"><p className="product-parameters">{this.state.posts.orderCreationDate}</p></td>  
-        </tr>   
-        <tr>
-          <td className="products-table-cell"><p className="product-parameters">{this.state.posts.price}</p></td>         
-        </tr>
+      <tr className='order'>
+        <td>
+        <div className='order-head'>
+          <p className='order-parameter'>Date: {this.state.posts.creationDate.slice(0, 10)}</p>
+          <p className='order-parameter'>Price: {this.state.posts.price}</p>      
+        </div>
+        <div className='order-products'>
           <ProductTable mode="order" products={this.state.posts.shoppingCart.products}/>
-        
-          
+        </div>  
+        </td>
       </tr> 
     )
   }

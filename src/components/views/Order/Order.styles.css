@@ -1,0 +1,15 @@
+.order
+{
+    margin-bottom: 1rem;
+    border: 2px dotted rgb(48, 52, 54);
+}
+
+.order-head
+{
+    background-color: rgb(32, 32, 32);
+}
+
+.order-parameter
+{
+    padding: 0.5rem;
+}
