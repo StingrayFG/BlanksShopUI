@@ -7,7 +7,8 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import OrderTable from 'components/tables/Order/OrderTable'
 
-import '../LoginPage.styles.css';
+import '../Authorization.styles.css';
+import './AccountPage.styles.css';
 
 import store from "store";
 import api from 'api';
@@ -32,7 +33,6 @@ const AccountPage = ({}) => {
   async function getOrders () {
     await services.getOrders(store.getState().user.id)
       .then(res => {
-        console.log(res);
         setOrdersList(res);
       })
       .catch(error => console.error(error))
@@ -47,10 +47,16 @@ const AccountPage = ({}) => {
   return(
       <div className="std">
         <h2>Account</h2>
-        <h2>{store.getState().user.name}</h2>
-        <button onClick={logOut}><p>Log Out</p></button>
-        <h2>Orders</h2>
-        <OrderTable orders={ordersList}></OrderTable>
+        <div className='account-info'>
+          <p>{store.getState().user.name}</p>
+          <p>{store.getState().user.phoneNumber}</p>
+          <button className='logOut' onClick={logOut}><p>Log Out</p></button>
+        </div>
+        <div className='orders-info'>
+          <h2>Orders</h2>
+          <OrderTable orders={ordersList}></OrderTable>
+        </div>
+       
       </div>
   ) 
 }

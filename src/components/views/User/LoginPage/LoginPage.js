@@ -6,8 +6,7 @@ import { loginUser, userSelector, clearState } from 'services/User/UserSlice';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
-import '../LoginPage.styles.css';
-
+import '../Authorization.styles.css';
 const LoginPage = ({}) => {
 
   const dispatch = useDispatch();

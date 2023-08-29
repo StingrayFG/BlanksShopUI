@@ -6,7 +6,7 @@ import { signupUser, userSelector, clearState } from 'services/User/UserSlice';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
-import '../LoginPage.styles.css';
+import '../Authorization.styles.css';
 
 import api from 'api';
 
