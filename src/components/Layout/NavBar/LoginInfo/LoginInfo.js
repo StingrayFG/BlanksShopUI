@@ -13,17 +13,17 @@ const LoginInfo = () => {
 
   if (store.getState().user.id == 0){
     return(
-      <span>
-        <Link to="/signup" className="link-menu-right">Sign Up</Link> 
-        <Link to="/login" className="link-menu-right">Log In</Link>     
+      <span className='menu-right'>
+        <Link to="/signup" className="link-menu">Sign Up</Link> 
+        <Link to="/login" className="link-menu">Log In</Link>     
       </span>
     )
   }
   else {
     return(
-      <span>
-        <Link to="/account" className="link-menu-right">Account</Link> 
-        <Link to="/cart" className="link-menu-right">Cart</Link>  
+      <span className='menu-right'>
+        <Link to="/account" className="link-menu">Account</Link> 
+        <Link to="/cart" className="link-menu">Cart</Link>  
       </span>
     )
   }  

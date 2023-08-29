@@ -13,8 +13,8 @@ class Menu extends React.Component {
 
     render(){
         return(
-        <div className="menu std">
-            <span>
+        <div className="menu">
+            <span className='menu-left'>
                 <Link to="/catalog" className="link-menu">Catalog</Link>
                 <Link to="/payments" className="link-menu">Payments</Link>
                 <Link to="/contacts" className="link-menu">Contact Us</Link> 
