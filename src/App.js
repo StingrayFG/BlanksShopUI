@@ -20,7 +20,7 @@ class App extends React.Component {
 
   render(){
     return (
-      <div>
+      
         <BrowserRouter>
             <Menu/>
             <Routes>   
@@ -34,8 +34,9 @@ class App extends React.Component {
               <Route path="/account" element={<AccountPage/>} />
               <Route path="/cart" element={<ShoppingCartPage/>} />    
             </Routes>
+            <div className='bottom-filler'></div>
           </BrowserRouter>
-      </div> 
+      
     );
   }
 }
