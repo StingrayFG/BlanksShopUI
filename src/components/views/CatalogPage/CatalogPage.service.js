@@ -10,7 +10,10 @@ const CatalogPageService = {
       .then(res => {
         return res;
       })
-      .catch(error => console.error(error))
+      .catch(error => {
+        console.error(error);
+        return null;
+      })
   }
 }
 

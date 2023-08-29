@@ -31,8 +31,8 @@ class Catalog extends React.Component {
   }
 
   render() {
-    if (this.state.isMounted == false) return null;
-    else return(
+    if (this.state.isMounted === false) return null;
+    else if (this.state.cards !== null) return(
         <div className="catalog std">  
           <h2>Catalog</h2>
           
@@ -41,7 +41,8 @@ class Catalog extends React.Component {
           ))}
 
         </div>   
-    )}
+    )
+  }
 }
 
 export default Catalog;
