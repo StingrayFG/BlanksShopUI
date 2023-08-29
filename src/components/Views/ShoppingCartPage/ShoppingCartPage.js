@@ -1,14 +1,12 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-import Product from '../Product/Product'
-
 import './ShoppingCartPage.styles.css'
 
 import store from "store";
 import api from 'api';
 import ProductTable from 'components/tables/Product/ProductTable';
-
+import service from './ShoppingCartPage.service'
 
 class ShoppingCartPage extends React.Component {
 
@@ -27,8 +25,7 @@ class ShoppingCartPage extends React.Component {
   }
 
   async getCart() {
-    const res = await fetch(api.baseUrl + 'shoppingcart/get/currentbycustomer?customerID=' + store.getState().user.id)
-        .then(res => res.json())
+    await service.getCart()
         .then(res => {
             this.setState({
                 posts: res
@@ -39,15 +36,11 @@ class ShoppingCartPage extends React.Component {
         this.forceUpdate();
   }
 
-  createOrder()
+  async createOrder()
   {
-    if ((store.getState().user.id != 0) && (this.state.posts.products.length != 0))
+    if ((store.getState().user.id !== 0) && (this.state.posts.products.length !== 0))
     {
-      const requestOptions = {
-        method: 'POST',
-      };
-      console.log(this.state.posts);
-      fetch(api.baseUrl + 'order/add?customerID=' + store.getState().user.id + '&paymentMethod=cash', requestOptions)
+      await service.createOrder()
         .then(res =>
           {
             if (!res.ok) {
@@ -58,6 +51,10 @@ class ShoppingCartPage extends React.Component {
           }
         )
     }
+    else
+    {
+      alert("Something went wrong, try again later")
+    }
   }
 
   manualUpdate()
@@ -66,23 +63,39 @@ class ShoppingCartPage extends React.Component {
   }
 
   render() {
-    if (this.state.isMounted == false) return null;
-    else if (this.state.isCreated == true) 
+    if (this.state.isMounted === false) return null;
+    else if (this.state.isCreated === true) 
       return( 
-        <Navigate replace to="/catalog" />   
+        <Navigate replace to="/catalog" />    
       )
-    else if (store.getState().user.id != 0){
-      return(
-        <div className="std">
-          <h2>
-          Cart
-          </h2>
-          <ProductTable mode="cart" products={this.state.posts.products} updateTable={this.getCart}/>
+    else if (store.getState().user.id !== 0){
+      if (this.state.posts != null){
+        return(
+          <div className="std">
+            <h2>
+            Cart
+            </h2>
+            <ProductTable mode="cart" products={this.state.posts.products} updateTable={this.getCart}/>
   
-          <button className='cart-confirm-button' onClick={this.createOrder}><p>Create order</p></button>
-          <p className='cart-price'>In total: {this.state.posts.totalPrice}</p> 
-        </div>           
-      )}
+            <div className='summary'>
+              <p className='cart-price'>In total: {this.state.price}</p> 
+              <button className='cart-confirm-button' onClick={this.createOrder}><p>Create order</p></button>
+            </div>
+            
+          </div>           
+        )
+      }
+      else {
+        return (
+        <div className="std">
+            <h2>
+            Cart 
+            </h2>
+            <p>Cart is empty</p>
+        </div>  
+        )
+      }
+    }
   }
 }
 
