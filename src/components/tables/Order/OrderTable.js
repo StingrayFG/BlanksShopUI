@@ -18,7 +18,7 @@ class OrderTable extends React.Component {
     render()
     {
         return(
-            <table className="products-table">
+            <table className="orders-table">
                 <tbody>
                     {this.props.orders.map((element) => (
                         <Order key={element.id} json={element} mode={this.props.mode} updateTable={this.props.updateTable}/>
