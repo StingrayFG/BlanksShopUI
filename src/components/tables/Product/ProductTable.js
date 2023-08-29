@@ -1,5 +1,4 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
 
 import Product from 'components/views/Product/Product';
 
@@ -16,63 +15,66 @@ class ProductTable extends React.Component {
 
     render()
     {
-        if (this.props.mode == "cart")
+        if (this.props.mode === "cart")
         {
             return(
-                <table className="products-table">
-                    <tbody>
-                        <tr>
-                            <td className="products-table-type-cell"><p>Type</p></td>
-                            <td className="products-table-cell"><p>Width</p></td>
-                            <td className="products-table-cell"><p>Height</p></td>
-                            <td className="products-table-cell"><p>Length</p></td>
-                            <td className="products-table-cell"><p>Price</p></td>
-                            <td className="products-table-cell"><p>Count</p></td>
-                        </tr> 
-                        {this.props.products.map((element) => (
-                            <Product key={element.id} json={element} mode={this.props.mode} updateTable={this.props.updateTable}></Product>
-                        ))}
-                    </tbody>
-                </table>
+                <div>
+                    <table className="products-table">
+                        <tbody>
+                            <tr>
+                                <td className="products-table-type-cell"><p>Type</p></td>
+                                <td className="products-table-cell"><p>Dimensions</p></td>
+                                <td className="products-table-cell"><p>Price</p></td>
+                                <td className="products-table-cell"><p>Count</p></td>
+                                <td className="products-table-cell"></td>
+                            </tr> 
+                            {this.props.products.map((element) => (
+                                <Product key={element.id} json={element} mode={this.props.mode} updateTable={this.props.updateTable}></Product>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             )
         }    
-        else if (this.props.mode == "page")
+        else if (this.props.mode === "page")
         {
             return(
-                <table className="products-table">
-                    <tbody>
-                        <tr>
-                            <td className="products-table-cell"><p>Width</p></td>
-                            <td className="products-table-cell"><p>Height</p></td>
-                            <td className="products-table-cell"><p>Length</p></td>
-                            <td className="products-table-cell"><p>Price</p></td>
-                            <td className="products-table-cell"><p>In stock</p></td>
-                        </tr>
-                        {this.props.products.map(element => (
-                            <Product key={element.id} json={element} mode={this.props.mode} updateTable={this.props.updateTable}></Product>
-                        ))} 
-                    </tbody>
-                </table>
+                <div>
+                    <table className="products-table">
+                        <tbody>
+                            <tr>
+                                <td className="products-table-cell"><p>Dimensions</p></td>
+                                <td className="products-table-cell"><p>Price</p></td>
+                                <td className="products-table-cell"><p>In stock</p></td>
+                                <td className="products-table-cell"></td>
+                            </tr>
+                            {this.props.products.map(element => (
+                                <Product key={element.id} json={element} mode={this.props.mode} updateTable={this.props.updateTable}></Product>
+                            ))} 
+                        </tbody>
+                    </table>
+                </div>
             )
         }
-        else if (this.props.mode == "order")
+        else if (this.props.mode === "order")
         {
             return(
-                
-                    <tr>
-                        <tr>
-                            <td className="products-table-type-cell"><p>Type</p></td>
-                            <td className="products-table-cell"><p>Width</p></td>
-                            <td className="products-table-cell"><p>Height</p></td>
-                            <td className="products-table-cell"><p>Length</p></td>
-                            <td className="products-table-cell"><p>Price</p></td>
-                            <td className="products-table-cell"><p>Count</p></td>
-                        </tr>
-                        {this.props.products.map(element => (
-                            <Product key={element.id} json={element} mode={this.props.mode} updateTable={this.props.updateTable}></Product>
-                        ))} 
-                    </tr>
-               
+                <div>
+                    <table className="products-table products-table-order">
+                        <tbody>
+                            <tr>
+                                <td className="products-table-type-cell"><p>Type</p></td>
+                                <td className="products-table-cell"><p>Dimensions</p></td>
+                                <td className="products-table-cell"><p>Price</p></td>
+                                <td className="products-table-cell"><p>Count</p></td>
+                            </tr>
+                            {this.props.products.map(element => (
+                                <Product key={element.id} json={element} mode={this.props.mode} updateTable={this.props.updateTable}></Product>
+                            ))} 
+
+                        </tbody>
+                    </table>
+                </div>
             )
         }
     }

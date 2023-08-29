@@ -28,7 +28,7 @@ class Product extends React.Component {
 
   async addToCart()
   {
-    if(store.getState().user.id == 0)
+    if(store.getState().user.id === 0)
     {
       alert("You have to log in first!")
     }
@@ -42,7 +42,7 @@ class Product extends React.Component {
 
   async removeFromCart()
   {
-    if (store.getState().user.id != 0)
+    if (store.getState().user.id !== 0)
     {
       await service.removeFromCart(store.getState().user.id, this.state.posts.id)
       this.props.updateTable();
@@ -51,12 +51,10 @@ class Product extends React.Component {
   }
 
   render() {
-    if (this.state.isMounted == false) return null;
-    else if (this.props.mode == "page") return(
+    if (this.state.isMounted === false) return null;
+    else if (this.props.mode === "page") return(
       <tr>
-        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.dimensions.width}</p></td>  
-        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.dimensions.height}</p></td>  
-        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.dimensions.length}</p></td>  
+        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.dimensions.width}x{this.state.posts.dimensions.height}x{this.state.posts.dimensions.length}</p></td>  
         <td className="products-table-cell"><p className="product-parameters">{this.state.posts.price}</p></td>  
         <td className="products-table-cell"><p className="product-parameters">{this.state.posts.count}</p></td> 
         <td className="products-table-button-cell">
@@ -64,16 +62,14 @@ class Product extends React.Component {
         </td>
       </tr>        
     )
-    else if (this.props.mode == "cart") return(
+    else if (this.props.mode === "cart") return(
       <tr>
         <td className="products-table-cell"><p className="product-parameters">
           {this.state.posts.name.slice(0,1).toUpperCase() + 
           this.state.posts.name.slice(1, this.state.posts.name.length)}&nbsp;
           {this.state.posts.material.name}
         </p></td>
-        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.dimensions.width}</p></td>  
-        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.dimensions.height}</p></td>  
-        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.dimensions.length}</p></td>  
+        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.dimensions.width}x{this.state.posts.dimensions.height}x{this.state.posts.dimensions.length}</p></td>  
         <td className="products-table-cell"><p className="product-parameters">{this.state.posts.price}</p></td>  
         <td className="products-table-cell"><p className="product-parameters">{this.state.posts.count}</p></td>  
         <td className="products-table-button-cell">
@@ -81,16 +77,14 @@ class Product extends React.Component {
         </td>
       </tr>  
     )
-    else if (this.props.mode == "order") return(
+    else if (this.props.mode === "order") return(
       <tr>
         <td className="products-table-cell"><p className="product-parameters">
           {this.state.posts.name.slice(0,1).toUpperCase() + 
           this.state.posts.name.slice(1, this.state.posts.name.length)}&nbsp;
           {this.state.posts.material.name}
         </p></td>
-        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.dimensions.width}</p></td>  
-        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.dimensions.height}</p></td>  
-        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.dimensions.length}</p></td>  
+        <td className="products-table-cell"><p className="product-parameters">{this.state.posts.dimensions.width}x{this.state.posts.dimensions.height}x{this.state.posts.dimensions.length}</p></td>  
         <td className="products-table-cell"><p className="product-parameters">{this.state.posts.price}</p></td>  
         <td className="products-table-cell"><p className="product-parameters">{this.state.posts.count}</p></td>  
       </tr>  
