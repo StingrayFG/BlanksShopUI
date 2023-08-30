@@ -79,7 +79,7 @@ class ShoppingCartPage extends React.Component {
   
             <div className='summary'>
               <p className='cart-price'>In total: {this.state.price}</p> 
-              <button className='cart-confirm-button' onClick={this.createOrder}><p>Create order</p></button>
+              <button className='cart-confirm-button' onClick={this.createOrder}><p className='button-text'>Create order</p></button>
             </div>
             
           </div>           
