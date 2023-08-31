@@ -9,6 +9,7 @@ import OrderTable from 'components/tables/Order/OrderTable'
 
 import '../Authorization.styles.css';
 import './AccountPage.styles.css';
+import userpic from 'images/user-default.jpg';
 
 import store from "store";
 import api from 'api';
@@ -44,10 +45,13 @@ const AccountPage = ({}) => {
     getOrders()
   }, [])
 
-  return(
+  if (store.getState().user.id !== 0)
+  {
+    return(
       <div className="std">
         <h2>Account</h2>
         <div className='account-info'>
+          <img src={userpic}></img>
           <p>{store.getState().user.name}</p>
           <p>{store.getState().user.phoneNumber}</p>
           <button className='logOut' onClick={logOut}><p>Log Out</p></button>
@@ -59,6 +63,17 @@ const AccountPage = ({}) => {
        
       </div>
   ) 
+  }
+  else
+  {
+    return(
+      <div className="std">
+        <h2>Account</h2>
+        <p>You have to login first</p>
+      </div>
+    )
+  }
+  
 }
 
 export default AccountPage;

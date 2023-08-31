@@ -28,3 +28,9 @@ tr{
   width: 100%;
   display: inline-table;
 }
+
+img
+{
+  width: 80%;
+  margin-left: 0.25rem;
+}
