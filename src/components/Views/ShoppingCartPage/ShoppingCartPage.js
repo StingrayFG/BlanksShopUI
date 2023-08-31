@@ -78,7 +78,7 @@ class ShoppingCartPage extends React.Component {
             <ProductTable mode="cart" products={this.state.posts.products} updateTable={this.getCart}/>
   
             <div className='summary'>
-              <p className='cart-price'>In total: {this.state.price}</p> 
+              <p className='cart-price'>In total: {this.state.posts.price}$</p> 
               <button className='cart-confirm-button' onClick={this.createOrder}><p className='button-text'>Create order</p></button>
             </div>
             
