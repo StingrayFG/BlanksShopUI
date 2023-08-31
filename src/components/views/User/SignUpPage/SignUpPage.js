@@ -19,7 +19,14 @@ const SignUpPage = ({}) => {
     userSelector
   );
   const onSubmit = (data) => {
-    dispatch(signupUser(data));
+    if ((data.name !== "") && (data.phoneNumber !== "") && (data.password !== ""))
+    {
+      dispatch(signupUser(data));
+    }
+    else
+    {
+      alert("Fill all the required fields")
+    }
   };
 
   useEffect(() => {
@@ -36,18 +43,19 @@ const SignUpPage = ({}) => {
 
     if (isError) {
       toast.error(errorMessage);
+      alert("Something went wrong")
       dispatch(clearState());
     }
   }, [isSuccess, isError]);
   
   return(
       <div className="std">
-        <h2>Login</h2>
+        <h2>Sign up</h2>
         <div className="login-window">
           <div className="login-window-frame">
             <form onSubmit = {handleSubmit(onSubmit)}>
               <label>
-                <p>Phone Number</p>
+                <p>Name</p>
                 <input 
                   id="name"
                   {...register("name")}

@@ -28,6 +28,7 @@ const LoginPage = ({}) => {
   useEffect(() => {
     if (isError) {
       toast.error(errorMessage);
+      alert("Wrong login or password")
       dispatch(clearState());
     }
 
