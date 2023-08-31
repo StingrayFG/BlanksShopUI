@@ -1,5 +1,9 @@
 import React from 'react';
+
 import ProductTable from 'components/tables/Product/ProductTable';
+
+import './CardPage.styles.css'
+import ProductSVG from './ProductSVG';
 
 class CardPage extends React.Component {
 
@@ -23,10 +27,18 @@ class CardPage extends React.Component {
     else return(
       <div className="std">
         <h2>
-        {this.state.posts.name.slice(0,1).toUpperCase() + 
-        this.state.posts.name.slice(1, this.state.posts.name.length)}&nbsp;
-        {this.state.posts.materialName}
+        {this.state.posts.productType.name.slice(0,1).toUpperCase() + 
+        this.state.posts.productType.name.slice(1, this.state.posts.productType.name.length)}&nbsp;
+        {this.state.posts.material.name}
         </h2>
+
+        <ProductSVG type={this.state.posts.productType.name} material={this.state.posts.material.name}></ProductSVG>
+
+        <div className='card-info'>        
+          <p className='card-info-text'>{this.state.posts.productType.description}</p>
+          <p className='card-info-text'>{this.state.posts.material.description}</p>
+        </div>
+
         <ProductTable mode="page" products={this.state.posts.products}/>
       </div>           
     )}
