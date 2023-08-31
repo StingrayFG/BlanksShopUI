@@ -32,9 +32,9 @@ class Card extends React.Component {
             <tr>
               <td className="card-header" colSpan="2">
                 <Link to="/product" state={this.props} className="link-card">
-                {this.state.posts.name.slice(0,1).toUpperCase() + 
-                this.state.posts.name.slice(1, this.state.posts.name.length)}&nbsp;
-                {this.state.posts.materialName}
+                {this.state.posts.productType.name.slice(0,1).toUpperCase() + 
+                this.state.posts.productType.name.slice(1, this.state.posts.productType.name.length)}&nbsp;
+                {this.state.posts.material.name}
                 </Link>
               </td>
             </tr>
