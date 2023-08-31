@@ -23,8 +23,8 @@ class ProductTable extends React.Component {
                         <tbody>
                             <tr>
                                 <td className="products-table-type-cell"><p>Type</p></td>
-                                <td className="products-table-cell"><p>Dimensions</p></td>
-                                <td className="products-table-cell"><p>Price</p></td>
+                                <td className="products-table-cell"><p>Dimensions, mm</p></td>
+                                <td className="products-table-cell"><p>Price, $</p></td>
                                 <td className="products-table-cell"><p>Count</p></td>
                                 <td className="products-table-cell"></td>
                             </tr> 
@@ -40,11 +40,11 @@ class ProductTable extends React.Component {
         {
             return(
                 <div>
-                    <table className="products-table">
+                    <table className="products-table products-table-page">
                         <tbody>
                             <tr>
-                                <td className="products-table-cell"><p>Dimensions</p></td>
-                                <td className="products-table-cell"><p>Price</p></td>
+                                <td className="products-table-cell"><p>Dimensions, mm</p></td>
+                                <td className="products-table-cell"><p>Price, $</p></td>
                                 <td className="products-table-cell"><p>In stock</p></td>
                                 <td className="products-table-cell"></td>
                             </tr>
@@ -64,8 +64,8 @@ class ProductTable extends React.Component {
                         <tbody>
                             <tr>
                                 <td className="products-table-type-cell"><p>Type</p></td>
-                                <td className="products-table-cell"><p>Dimensions</p></td>
-                                <td className="products-table-cell"><p>Price</p></td>
+                                <td className="products-table-cell"><p>Dimensions, mm</p></td>
+                                <td className="products-table-cell"><p>Price, $</p></td>
                                 <td className="products-table-cell"><p>Count</p></td>
                             </tr>
                             {this.props.products.map(element => (

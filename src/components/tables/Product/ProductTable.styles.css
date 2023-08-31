@@ -5,7 +5,7 @@
   border: 1px solid rgb(48, 52, 54);
   margin: 0 auto;
  
-  margin: 0.25rem;
+  margin: 0.5rem;
   margin-top: 0.5rem;
   float: left;
 }
@@ -16,6 +16,12 @@
   
   margin: 0;
   margin-top: 0.5rem;
+}
+
+.products-table-page
+{
+  width: 80%;
+  margin-left: 10%;
 }
 
 
@@ -42,14 +48,15 @@
 
 .products-table-button
 {
-  width: 100%;
-  border: 1px solid rgb(48, 52, 54);   
-  margin: 0 auto;
+  width: calc(100% - 0.5rem);
+  
+  border: 1px solid rgb(48, 52, 54);    
+  background-color: rgb(31, 34, 36);
+
   font-size: 18px;
   font-family: "Calibri";
-  margin: 0;
-  padding: 0.5rem;
-  background-color: rgb(31, 34, 36);
+
+  margin: 0.25rem;
 }
 
 .products-table-button:hover
@@ -72,4 +79,32 @@
   display: block;
 }
 
+.product-count
+{
+  display: inline-block;
+  text-align: center;
+  width: 2rem;
+}
+
+.product-count-button-right
+{
+  text-align: center;
+  width: 2rem;
+  float: inline-end;
+  margin: 0.25rem;
+}
+
+.product-count-button-left
+{
+  text-align: center;
+  width: 2rem;
+  display: inline-block;
+  margin: 0.25rem;
+}
+
+
+.button-text
+{
+  text-align: center;
+}
 
