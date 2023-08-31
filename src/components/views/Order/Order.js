@@ -31,8 +31,16 @@ class Order extends React.Component {
       <tr className='order'>
         <td>
         <div className='order-head'>
-          <p className='order-parameter'>Date: {this.state.posts.creationDate.slice(0, 10)}</p>
-          <p className='order-parameter'>Price: {this.state.posts.price}</p>      
+          <span>
+          <p className='order-parameter'>Created: {this.state.posts.creationDate.slice(0, 10)}</p>
+          <p className='order-parameter'>Completed: {this.state.posts.creationDate.slice(0, 10)}</p>
+          </span>
+          <span>
+          <p className='order-parameter'>Price: {this.state.posts.price}$</p>   
+          <p className='order-parameter-payment'>Payment method: {this.state.posts.paymentMethod}</p>  
+          </span>
+          
+             
         </div>
         <div className='order-products'>
           <ProductTable mode="order" products={this.state.posts.shoppingCart.products}/>
