@@ -95,7 +95,7 @@ export const userSlice = createSlice({
     [signupUser.rejected]: (state, { payload }) => {
       state.isFetching = false;
       state.isError = true;
-      state.errorMessage = payload.message;
+      //state.errorMessage = payload.message;
     },
 
     [loginUser.fulfilled]: (state, { payload }) => {
@@ -110,7 +110,7 @@ export const userSlice = createSlice({
       console.log('payload', payload);
       state.isFetching = false;
       state.isError = true;
-      state.errorMessage = payload.message;
+      //state.errorMessage = payload.message;
     },
     [loginUser.pending]: (state) => {
       state.isFetching = true;
