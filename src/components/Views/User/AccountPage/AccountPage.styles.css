@@ -1,0 +1,36 @@
+.logOut
+{
+  margin-left: 0.25rem;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.account-info
+{
+  margin-top: 0.5rem;
+  width: 30%;
+  float: left;
+  padding: 0.25rem;
+  
+}
+
+.orders-info
+{
+  margin-top: 0.5rem;
+  width: 70%;
+  float: right;
+  padding: 0.5rem;
+ 
+}
+
+
+tr{
+  width: 100%;
+  display: inline-table;
+}
+
+img
+{
+  width: 80%;
+  margin-left: 0.25rem;
+}

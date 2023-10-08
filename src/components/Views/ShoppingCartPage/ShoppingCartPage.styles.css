@@ -1,0 +1,43 @@
+
+.cart-confirm-button
+{
+  width: 20%;
+  border: 1px solid #ffffff;    
+  margin-top: 5rem;
+  margin-right: 10%;
+  float: right;
+  font-size: 18px;
+  font-family: "Calibri";
+
+}
+
+.cart-price
+{
+  margin: 0 auto;
+ 
+}
+
+.cart-confirm-button
+{
+  width: 100%;
+
+  margin: 0 auto;
+  margin-top: 0.5rem;
+  border: 1px solid rgb(48, 52, 54);   
+  background-color: rgb(31, 34, 36);
+  padding: 0.5rem;
+}
+
+.summary
+{
+  margin: 0.5rem;
+  width: 30%;
+  float: right;
+  padding: 1rem;
+  border: 1px solid rgb(48, 52, 54);
+}
+
+.button-text
+{
+  text-align: center;
+}
